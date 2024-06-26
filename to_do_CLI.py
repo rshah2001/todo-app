@@ -9,6 +9,7 @@ import time
 
 now = time.strftime("Hi it is %b %d,%Y. \nTime is %H:%M")
 print(now)
+
 while True:
     user_action = input("Type add, show, edit, complete or exit: ")
     user_action = user_action.strip()  # strip function removes the extra spaces from the input taken by the user
