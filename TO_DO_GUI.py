@@ -14,12 +14,16 @@ input_box = Sg.InputText(tooltip="Enter a Todo", key="todo")
 # adding a button
 add_button = Sg.Button("Add")
 edit_button = Sg.Button("Edit")
+complete_button = Sg.Button("Complete")
+exit_button = Sg.Button("Exit")
 
 
 # This will be the title of the window.
 # this layout expects a list. Items placed inside the inner brackets will be placed in one row
 window = Sg.Window('My To-Do App',
-                   layout=[[label], [input_box, add_button], [list_box, edit_button]],
+                   layout=[[label], [input_box, add_button],
+                           [list_box, edit_button, complete_button],
+                           [exit_button]],
                    font=('Helvetica', 20))
 '''put the input box in next line; put both of them in separate [] '''
 
@@ -63,10 +67,22 @@ while True:
 
             window['todos'].update(values=todos)  # Updating the list at the same time
 
+        case 'Exit':
+            break
+
+        case 'Complete':
+            todo_to_complete = values['todos'][0]
+            todos = functions.get_todos()
+            todos.remove(todo_to_complete)
+            functions.write_todos(todos)
+            window['todos'].update(values=todos)
+            window['todo'].update(value='')
+
         case 'todos':
             window['todo'].update(value=values['todos'][0])
+
         case Sg.WIN_CLOSED:
             break
 
-
+print("Bye")
 window.close()
