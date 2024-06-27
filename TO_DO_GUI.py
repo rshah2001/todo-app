@@ -14,9 +14,9 @@ list_box = Sg.Listbox(values=functions.get_todos(), key='todos',
 input_box = Sg.InputText(tooltip="Enter a Todo", key="todo")
 
 # adding a button
-add_button = Sg.Button("Add")
+add_button = Sg.Button(image_source="add.png", tooltip="Add Todo", key ="Add")
 edit_button = Sg.Button("Edit")
-complete_button = Sg.Button("Complete")
+complete_button = Sg.Button(image_source="complete.png", tooltip="Complete", key="Complete")
 exit_button = Sg.Button("Exit")
 
 
